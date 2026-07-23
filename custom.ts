@@ -66,7 +66,7 @@ namespace aquestalk {
      */
     //% block="つなげて喋る(桁付き) 前%text1 数字%num 後%text2"
     export function sayDigitsCombined(text1: string, num: string, text2: string): void {
-        let fullText2 = text1 + "<NUMK VAL=" + num + ">" + text2;
+        let fullText2 = text1  + "," + "<NUMK VAL=" + num + ">"  + "," + text2;
         sendText(fullText2);
     }
 
