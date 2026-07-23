@@ -54,7 +54,7 @@ namespace aquestalk {
      */
     //% block="つなげて喋る(1つずつ) 前%text1 数字%num 後%text2"
     export function sayNumberCombined(text1: string, num: string, text2: string): void {
-        let fullText = text1 + "<NUM VAL=" + num + ">" + text2;
+        let fullText = text1 + "," + "<NUM VAL=" + num + ">" + "," + text2;
         sendText(fullText);
     }
 
