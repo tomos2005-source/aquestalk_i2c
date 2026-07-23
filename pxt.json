@@ -1,5 +1,6 @@
 {
     "name": "aquestalk_i2c",
+    "version": "0.0.1",
     "description": "AquestalkをI2Cで接続して話すブロックです。",
     "icon": "icon.png",
     "dependencies": {
