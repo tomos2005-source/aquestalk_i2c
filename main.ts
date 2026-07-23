@@ -1,7 +1,3 @@
-/**
- * AquesTalk (音声合成) カスタムブロック
- */
-//% color="#2ecc71" icon="\uf028" block="AquesTalk"
 namespace aquestalk {
 
     const I2C_ADDR = 46; // ATP3012のデフォルトI2Cアドレス (0x2E)
@@ -70,8 +66,8 @@ namespace aquestalk {
      */
     //% block="つなげて喋る(桁付き) 前%text1 数字%num 後%text2"
     export function sayDigitsCombined(text1: string, num: string, text2: string): void {
-        let fullText = text1 + "<NUMK VAL=" + num + ">" + text2;
-        sendText(fullText);
+        let fullText2 = text1 + "<NUMK VAL=" + num + ">" + text2;
+        sendText(fullText2);
     }
 
     /**
@@ -83,8 +79,8 @@ namespace aquestalk {
      */
     //% block="単位付きでつなげて喋る 前%text1 数字%num 単位%counter 後%text2"
     export function sayDigitsCounterCombined(text1: string, num: string, counter: string, text2: string): void {
-        let fullText = text1 + "<NUMK VAL=" + num + " COUNTER=" + counter + ">" + text2;
-        sendText(fullText);
+        let fullText3 = text1 + "<NUMK VAL=" + num + " COUNTER=" + counter + ">" + text2;
+        sendText(fullText3);
     }
 
     // ==========================================
@@ -162,12 +158,12 @@ namespace aquestalk {
 
     // 内部処理
     function sendText(text: string): void {
-        let buf = pins.createBuffer(text.length + 1);
+        let buf2 = pins.createBuffer(text.length + 1);
         for (let i = 0; i < text.length; i++) {
-            buf.setNumber(NumberFormat.Int8LE, i, text.charCodeAt(i));
+            buf2.setNumber(NumberFormat.Int8LE, i, text.charCodeAt(i));
         }
-        buf.setNumber(NumberFormat.Int8LE, text.length, 13); // CR (\r)
-        pins.i2cWriteBuffer(I2C_ADDR, buf);
+        buf2.setNumber(NumberFormat.Int8LE, text.length, 13); // CR (\r)
+        pins.i2cWriteBuffer(I2C_ADDR, buf2);
         basic.pause(20); // 送信直後の判定ブレ防止
     }
 }
