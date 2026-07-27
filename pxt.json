@@ -13,7 +13,7 @@
         "main.ts",
         "README.md",
         "custom.ts",
-        "./icon.png"
+        "icon.png"
     ],
     "testFiles": [
         "test.ts"
