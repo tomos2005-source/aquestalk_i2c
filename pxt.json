@@ -2,7 +2,6 @@
     "name": "aquestalk_i2c",
     "version": "0.0.1",
     "description": "AquestalkをI2Cで接続して話すブロックです。",
-    "icon": "icon.png",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -12,14 +11,13 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "custom.ts",
-        "./icon.png"
+        "custom.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "9.0.5",
+        "target": "9.0.8",
         "targetId": "microbit"
     },
     "supportedTargets": [
