@@ -17,19 +17,19 @@ namespace aquestalk {
 
     /**
      * 数値を1つずつ「いち・に・さん」と順番に読み上げます。
-     * @param num 読む数字, eg: "3.14"
+     * @param num 読む数字, eg: 3.14
      */
     //% block="数字を1つずつ読む %num"
-    export function sayNumber(num: string): void {
+    export function sayNumber(num: number): void {
         sendText("<NUM VAL=" + num + ">");
     }
 
     /**
      * 数値を「せんにひゃくさんじゅうよん」と位（桁）をつけて読み上げます。
-     * @param num 読む数字, eg: "1234"
+     * @param num 読む数字, eg: 1234
      */
     //% block="数字を桁付きで読む %num"
-    export function sayNumberDigits(num: string): void {
+    export function sayNumberDigits(num: number): void {
         sendText("<NUMK VAL=" + num + ">");
     }
 
@@ -49,11 +49,11 @@ namespace aquestalk {
     /**
      * 前後の言葉と数字（1つずつ読み）をつなげて1文でしゃべらせます。
      * @param text1 前の言葉, eg: "korewa"
-     * @param num 数字, eg: "123"
+     * @param num 数字, eg: 123
      * @param text2 後の言葉, eg: "desu"
      */
     //% block="つなげて喋る(1つずつ) 前%text1 数字%num 後%text2"
-    export function sayNumberCombined(text1: string, num: string, text2: string): void {
+    export function sayNumberCombined(text1: string, num: number, text2: string): void {
         let fullText = text1 + "," + "<NUM VAL=" + num + ">" + "," + text2;
         sendText(fullText);
     }
@@ -61,11 +61,11 @@ namespace aquestalk {
     /**
      * 前後の言葉と数字（桁付き読み）をつなげて1文でしゃべらせます。
      * @param text1 前の言葉, eg: "gonokoudaiga"
-     * @param num 数字, eg: "321"
+     * @param num 数字, eg: 321
      * @param text2 後の言葉, eg: "yen"
      */
     //% block="つなげて喋る(桁付き) 前%text1 数字%num 後%text2"
-    export function sayDigitsCombined(text1: string, num: string, text2: string): void {
+    export function sayDigitsCombined(text1: string, num: number, text2: string): void {
         let fullText2 = text1  + "," + "<NUMK VAL=" + num + ">"  + "," + text2;
         sendText(fullText2);
     }
@@ -73,12 +73,12 @@ namespace aquestalk {
     /**
      * 単位をつけて数字と前後の言葉をつなげて1文でしゃべらせます。
      * @param text1 前の言葉, eg: "ringoga"
-     * @param num 数字, eg: "3"
+     * @param num 数字, eg: 3
      * @param counter 単位（例: "ko"）, eg: "ko"
      * @param text2 後の言葉, eg: "arimasu"
      */
     //% block="単位付きでつなげて喋る 前%text1 数字%num 単位%counter 後%text2"
-    export function sayDigitsCounterCombined(text1: string, num: string, counter: string, text2: string): void {
+    export function sayDigitsCounterCombined(text1: string, num: number, counter: string, text2: string): void {
         let fullText3 = text1 + "<NUMK VAL=" + num + " COUNTER=" + counter + ">" + text2;
         sendText(fullText3);
     }
@@ -89,19 +89,19 @@ namespace aquestalk {
 
     /**
      * 数字（1つずつ読み）を音声記号テキストに変換します。
-     * @param num 読む数字, eg: "123"
+     * @param num 読む数字, eg: 123
      */
     //% block="数字(1つずつ) %num"
-    export function numSymbol(num: string): string {
+    export function numSymbol(num: number): string {
         return "<NUM VAL=" + num + ">";
     }
 
     /**
      * 数字（桁付き読み）を音声記号テキストに変換します。
-     * @param num 読む数字, eg: "123"
+     * @param num 読む数字, eg: 123
      */
     //% block="数字(桁付き) %num"
-    export function numkSymbol(num: string): string {
+    export function numkSymbol(num: number): string {
         return "<NUMK VAL=" + num + ">";
     }
 
@@ -120,6 +120,7 @@ namespace aquestalk {
     //% speed.min=50 speed.max=300 speed.defl=100
     //% pitch.min=50 pitch.max=200 pitch.defl=100
     //% volume.min=0 volume.max=100 volume.defl=100
+    //% inlineInputMode=external
     export function sayWithSettings(text: string, speed: number, pitch: number, volume: number): void {
         let tags = "<SPD VAL=" + speed + "><PITCH VAL=" + pitch + "><VOL VAL=" + volume + ">";
         sendText(tags + text);
