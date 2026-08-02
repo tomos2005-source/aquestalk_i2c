@@ -11,6 +11,7 @@ namespace aquestalk {
      * @param text 音声記号（例: "ohayou"）, eg: "ohayou"
      */
     //% block="しゃべる %text"
+    //% text.defl="ohayou"
     export function say(text: string): void {
         sendText(text);
     }
@@ -20,6 +21,7 @@ namespace aquestalk {
      * @param num 読む数字, eg: 3.14
      */
     //% block="数字を1つずつ読む %num"
+    //% num.defl=3.14
     export function sayNumber(num: number): void {
         sendText("<NUM VAL=" + num + ">");
     }
@@ -29,6 +31,7 @@ namespace aquestalk {
      * @param num 読む数字, eg: 1234
      */
     //% block="数字を桁付きで読む %num"
+    //% num.defl=1234
     export function sayNumberDigits(num: number): void {
         sendText("<NUMK VAL=" + num + ">");
     }
@@ -38,6 +41,7 @@ namespace aquestalk {
      * @param text 読む英数字（例: "AT-3568P"）, eg: "AT-3568P"
      */
     //% block="アルファベットを読む %text"
+    //% text.defl="AT-3568P"
     export function sayAlpha(text: string): void {
         sendText("<ALPHA VAL=" + text + ">");
     }
@@ -52,7 +56,11 @@ namespace aquestalk {
      * @param num 数字, eg: 123
      * @param text2 後の言葉, eg: "desu"
      */
-    //% block="つなげて喋る(1つずつ) 前%text1 数字%num 後%text2"
+    //% block="つなげて喋る(1つずつ) 前%text1|数字%num|後%text2"
+    //% text1.defl="korewa"
+    //% num.defl=123
+    //% text2.defl="desu"
+    //% inlineInputMode=external
     export function sayNumberCombined(text1: string, num: number, text2: string): void {
         let fullText = text1 + "," + "<NUM VAL=" + num + ">" + "," + text2;
         sendText(fullText);
@@ -64,7 +72,11 @@ namespace aquestalk {
      * @param num 数字, eg: 321
      * @param text2 後の言葉, eg: "yen"
      */
-    //% block="つなげて喋る(桁付き) 前%text1 数字%num 後%text2"
+    //% block="つなげて喋る(桁付き) 前%text1|数字%num|後%text2"
+    //% text1.defl="gonokoudaiga"
+    //% num.defl=321
+    //% text2.defl="yen"
+    //% inlineInputMode=external
     export function sayDigitsCombined(text1: string, num: number, text2: string): void {
         let fullText2 = text1  + "," + "<NUMK VAL=" + num + ">"  + "," + text2;
         sendText(fullText2);
@@ -77,7 +89,12 @@ namespace aquestalk {
      * @param counter 単位（例: "ko"）, eg: "ko"
      * @param text2 後の言葉, eg: "arimasu"
      */
-    //% block="単位付きでつなげて喋る 前%text1 数字%num 単位%counter 後%text2"
+    //% block="単位付きでつなげて喋る 前%text1|数字%num|単位%counter|後%text2"
+    //% text1.defl="ringoga"
+    //% num.defl=3
+    //% counter.defl="ko"
+    //% text2.defl="arimasu"
+    //% inlineInputMode=external
     export function sayDigitsCounterCombined(text1: string, num: number, counter: string, text2: string): void {
         let fullText3 = text1 + "<NUMK VAL=" + num + " COUNTER=" + counter + ">" + text2;
         sendText(fullText3);
@@ -92,6 +109,7 @@ namespace aquestalk {
      * @param num 読む数字, eg: 123
      */
     //% block="数字(1つずつ) %num"
+    //% num.defl=123
     export function numSymbol(num: number): string {
         return "<NUM VAL=" + num + ">";
     }
@@ -101,6 +119,7 @@ namespace aquestalk {
      * @param num 読む数字, eg: 123
      */
     //% block="数字(桁付き) %num"
+    //% num.defl=123
     export function numkSymbol(num: number): string {
         return "<NUMK VAL=" + num + ">";
     }
@@ -117,6 +136,7 @@ namespace aquestalk {
      * @param volume 声の大きさ (0~100), eg: 100
      */
     //% block="声を変えてしゃべる %text|速さ %speed|高さ %pitch|音量 %volume"
+    //% text.defl="ohayou"
     //% speed.min=50 speed.max=300 speed.defl=100
     //% pitch.min=50 pitch.max=200 pitch.defl=100
     //% volume.min=0 volume.max=100 volume.defl=100
